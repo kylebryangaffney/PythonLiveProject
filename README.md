@@ -44,7 +44,7 @@ I did not have any development experience in a team environment, and this was m
 ### Basic App Design & Front-End
 
 I first needed to create the Django project itself so that I could present the basic content. I registered my SaxophonePrices App with the mainapp and built a basic HTML homepage. Saxophones are always too cool for school, so I wanted to build a fairly stripped down but clean CSS format that would naturally fit with the theme. I worked through a few different designs before settling on a way to give the user feedback when the pointer hovered over different elements, and how to convey where the user was to the user. And, because I am proud of what I accomplished with this project, I signed it at the bottom with links to my GitHub and LinkedIn.
-![Overview of Site](images/Overview.gif)
+![Overview of Site](images/Overview.jpg)
 
 ### Model Creation
 My next task was to actually make the database model. It is worth noting, that while my initial model made sense on paper, after getting further into the project, I needed to update the design multiple times to accommodate real life. I used Django's ORM to define the model and migrate the data to the table. My initial model design used more choices from lists I provided. After actually interacting with search results, I found that the brand and model naming conventions used were too inconsistent for me to rely on a set list of options for the user interface. This forced me to normalize the data later down the line.
@@ -268,7 +268,7 @@ I used the primary key of the database entry to send the desired entry around t
 
 ### API (Connect & Parse)
 The next story required me to integrate a third-party API and present the JSON response, and this was where things got exciting. I did not read far enough ahead in the instructions before I started the initial design of my database model in Django, and integrating the API results started the cascading iteration. And this search function is the result of A LOT of trial and error. While I chose the Reverb.com API before I started the project very deliberately because the documentation seemed very helpful, I never actually looked at the results it returned until this step. A search to the reverb.com API will return ALL listings that fit the search parameters, and that quickly needed curating. I chose to only show the user the first 5 results in an attempt to mitigate overwhelming the user.
-![Reverb.com Search Page](images/Story-06-API.gif)
+![Reverb.com Search Page](images/Story-06-API.jpg)
 
 ```python
 def saxophone_prices_search(request):
@@ -406,7 +406,7 @@ An additional challenge I ran into was how to identify the saxophone type and br
 
 It was also at this point when I started to deliberately normalize the table layout for each page. It also simplified styling elements so I could use CSS classes as they were intended.
 
-![Web Scraping Page](images/Story-07-Front.gif)
+![Web Scraping Page](images/Story-07-Front.jpg)
 
 ```python
 def sax_alley_listings(request):
@@ -498,7 +498,7 @@ def sax_alley_listings(request):
 ### Front-End Improvements
 The next story required me to update the front end of the site. This actually required more back end work than front end work. I needed to normalize the data from the API search results, the web scraping results, and then the database I saved to itself. I had to get more data from the web scraping, less from the API search, and then normalize that data so that a user could make sense of it. I eventually settled on listing attributes that seemed like the most essential AND that I could access across both platforms. Then I had to update the model itself, then try to layout the tables in a way that made sense. Undoubtedly there are more ways that someone could structure the tables, but the end result makes sense and it looks the way I wanted it to.
 
-![Front End](images/Story-08-Front.gif)
+![Front End](images/Story-08-Front.jpg)
 
 ### Save Results
 To round out our web-scraping functionality, this next task was to build functionality that assisted users in saving information detailed in the web-scraped or API data to the database. As my web-scraped data was the only legitimate data of the two, I opted to use that. In order to help users save tea data from their web-scraped data, I also opted to use JavaScript. First, I turned the record/row names on the Site Info table into links to the Create page. I then used JavaScript's event listener to, upon click, pull all data from that selected row into session data in JSON format.
@@ -523,7 +523,7 @@ This process also forced me to revise the table layout. I chose to remove the "T
 ### BugFix
 The last story was fixing bugs. My biggest issue I was running into was actually with how the database listings were being presented. I had to update the database model, the all listings table, and the details pages to more accurately show the current iteration of attributes I wanted to use.
 
-![Saving Listing](images/Story-09-FRONT.gif)
+![Saving Listing](images/Story-09-FRONT.jpg)
 
 
 ### Future Improvements
